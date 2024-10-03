@@ -6,6 +6,10 @@ editor: visual
 
 #### Load Libraries
 
+```{r}
+install.packages("vembedr")
+```
+
 ```{r, message=FALSE}
 library(tidyverse)
 library(janitor)
@@ -75,9 +79,41 @@ patients <- patients %>%
 
 
 
+
 ```
 
 #### Apply Bayes Theorem in Class
+
+```{r}
+#look for p(b|a) = probability that someone has the disease given that the test result is positive
+
+# p(b) = the probability that somone has the disease
+patients %>%
+  tabyl(has_disease)
+
+# p(a) = the probability that the test result is positive
+patients %>%
+  tabyl(test_result)
+
+probability_has_disease <- 0.999
+
+probability_positive_test_result <- 0.0112
+
+#probability_
+
+
+#working
+patients %>%
+  tabyl(has_disease, test_result) %>%
+  adorn_percentages("row") #not row 
+
+likelihood <- 1.00000000
+  
+#finding p(b|a)
+(probability_has_disease * likelihood) / probability_positive_test_result
+
+(probability_has_disease * probability_positive_test_result) / likelihood
+```
 
 #### Video
 
@@ -90,3 +126,11 @@ embed_url("https://www.youtube.com/watch?v=R13BD8qKeTg")
 $$
 P(\text{have disease} \mid \text{positive second test}) = \frac{P(\text{have disease after first positive}) \cdot P(\text{positive second test} \mid \text{have disease})}{P(\text{positive second test})}
 $$
+
+#### notes about youtube video and thoughts
+
+-   something that would have to change from the previous example of the 8/9% of p(b\|a) which is the probability that someone has the disease given that the test result is positive would be the formula
+
+-   instead of p(b\|a), i believe maybe the b or the a would change when trying to see what would happen if you test positive again
+
+-   I think we would switch either the 0.999 or the 0.0112 would be changed in the new equation, but im not sure which one would
